@@ -31,11 +31,17 @@
 </template>
 
 <script>
+import {mapActions} from "vuex"
 export default {
   name: "App",
-
   data: () => ({
     //
   }),
+  created(){
+     this.getData()
+  },
+  methods:{
+    ...mapActions("Data", ["getData"])
+  }
 };
 </script>
