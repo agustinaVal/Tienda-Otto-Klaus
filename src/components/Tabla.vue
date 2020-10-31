@@ -5,9 +5,9 @@
         <tr>
           <th class="text-left">Nombre</th>
           <th class="text-left">Código</th>
-
           <th class="text-left">Stock</th>
           <th class="text-left">Precio</th>
+          <th class="text-left">Id</th>
      
         </tr>
       </thead>
@@ -22,11 +22,12 @@
             <template v-slot:activator="{ on, attrs }">
               <td v-bind="attrs" v-on="on">{{ item.nombre }}</td>
             </template>
-            <span>Pincha para editar</span>
+            <span>Pincha para editar / borrar</span>
           </v-tooltip>
           <td>{{ item.codigo }}</td>
           <td>{{ item.stock }}</td>
           <td>{{ item.precio }}</td>
+          <td>{{ item.id }}</td>
         </tr>
       </tbody>
     </template>

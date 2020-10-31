@@ -6,7 +6,6 @@
         <span v-if="!add">Agregar Producto</span>
         <span v-if="add">Ocultar Formulario</span>
       </v-btn>
-      
       <AgregarProductos v-if="add" />
       <EditarProd v-if="!edit" />
     </v-container>
@@ -36,9 +35,6 @@ export default {
     showAdd() {
       this.MostrarAdd();
     },
-    eliminar(id){
-      alert("Estas seguro que quieres eliminar")
-    }
   },
 };
 </script>

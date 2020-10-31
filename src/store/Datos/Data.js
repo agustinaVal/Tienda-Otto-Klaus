@@ -7,9 +7,8 @@ export default {
         add: false,
         edit: false,
         editProducto: {
-
         },
-
+        
     },
     getters: {
         datos(state) {
@@ -49,7 +48,6 @@ export default {
                 nombre,
                 codigo,
             };
-
             // agregar firestore
             try {
                 await firebase
@@ -59,11 +57,12 @@ export default {
             } catch (error) {
                 alert("Algo salio mal, reintente", error)
             }
-
-
             // agregar a store
             commit('addData', juguete);
         },
+        eliminarProducto({commit}, id){
+          firebase.firestore().collection("productos").doc(id).delete()
+        }
     },
     mutations: {
         setData(state, payload) {
