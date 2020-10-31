@@ -19,7 +19,7 @@
 				</v-col>
 
 				<v-col cols="12" md="4">
-					<v-btn @click="Agregar()" depressed>
+					<v-btn @click="Agregar(); limpiarData()"  depressed>
 						Agregar
 					</v-btn>
 				</v-col>
@@ -44,6 +44,12 @@ export default {
 		...mapActions('Data', ['addData']),
 		Agregar() {
 			this.addData(this.juguete);
+		},
+		limpiarData() {
+			(this.juguete.nombre = ''),
+				(this.juguete.codigo = ''),
+				(this.juguete.stock = ''),
+				(this.juguete.precio = '');
 		},
 	},
 };

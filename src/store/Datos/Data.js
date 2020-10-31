@@ -24,10 +24,22 @@ export default {
 			});
 		},
 		async addData({ commit }, payload) {
+			const precio = Number(payload.precio);
+			const stock = Number(payload.stock);
+			const nombre = payload.nombre.toLowerCase();
+			const codigo = payload.codigo.toUpperCase();
+
+			const juguete = {
+				precio,
+				stock,
+				nombre,
+				codigo,
+			};
+
 			// agregar firestore
 
 			// agregar a store
-			commit('addData', payload);
+			commit('addData', juguete);
 		},
 	},
 	mutations: {
