@@ -4,7 +4,7 @@
       <thead>
         <tr>
         <th class="text-left">
-            Producto
+            Nombre
           </th>
           <th class="text-left">
             Código

@@ -2,17 +2,20 @@
 	<div class="home">
 		<v-container>
 			<Tabla />
+      <AgregarProductos />
 		</v-container>
 	</div>
 </template>
 
 <script>
-import Tabla from '@/components/Tabla';
+import Tabla from '@/components/Tabla'
+import AgregarProductos from '@/components/AgregarProd';
 
 export default {
 	name: 'Home',
 	components: {
-		Tabla,
+    Tabla,
+    AgregarProductos
 	},
 };
 </script>

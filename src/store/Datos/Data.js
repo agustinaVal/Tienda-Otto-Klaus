@@ -12,7 +12,6 @@ export default {
 				.firestore()
 				.collection('productos')
 				.get();
-			console.log(db);
 			db.forEach((el) => {
 				const producto = {
 					id: el.id,
@@ -24,11 +23,19 @@ export default {
 				commit('setData', producto);
 			});
 		},
+		async addData({ commit }, payload) {
+			// agregar firestore
+
+			// agregar a store
+			commit('addData', payload);
+		},
 	},
 	mutations: {
 		setData(state, payload) {
 			state.Productos.push(payload);
-			console.log(state.Productos);
+		},
+		addData(state, payload) {
+			state.Productos.push(payload);
 		},
 	},
 };
