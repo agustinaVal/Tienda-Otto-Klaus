@@ -8,6 +8,7 @@
 
           <th class="text-left">Stock</th>
           <th class="text-left">Precio</th>
+     
         </tr>
       </thead>
 
@@ -23,7 +24,6 @@
             </template>
             <span>Pincha para editar</span>
           </v-tooltip>
-
           <td>{{ item.codigo }}</td>
           <td>{{ item.stock }}</td>
           <td>{{ item.precio }}</td>

@@ -3,36 +3,43 @@
     <v-container>
       <Tabla />
       <v-btn @click="showAdd" depressed>
-        <span v-if="!add">Agregar Producto</span> <span v-if="add">Ocultar Formulario</span>
+        <span v-if="!add">Agregar Producto</span>
+        <span v-if="add">Ocultar Formulario</span>
       </v-btn>
-      <AgregarProductos v-if="add"/>
+      
+      <AgregarProductos v-if="add" />
       <EditarProd v-if="!edit" />
     </v-container>
   </div>
 </template>
 
 <script>
-import Tabla from '@/components/Tabla';
-import AgregarProductos from '@/components/AgregarProd';
+import Tabla from "@/components/Tabla";
+import AgregarProductos from "@/components/AgregarProd";
 import EditarProd from "@/components/EditarProd.vue";
-import { mapMutations, mapState } from 'vuex';
+
+import { mapMutations, mapState } from "vuex";
 
 export default {
-	name: 'Home',
-	components: {
-		Tabla,
+  name: "Home",
+  components: {
+    Tabla,
     AgregarProductos,
-    EditarProd
-	},
-	computed: {
-		...mapState('Data', ['add' , 'edit']),
+    EditarProd,
+
+  },
+  computed: {
+    ...mapState("Data", ["add", "edit"]),
   },
   methods: {
     ...mapMutations("Data", ["MostrarAdd"]),
     showAdd() {
       this.MostrarAdd();
+    },
+    eliminar(id){
+      alert("Estas seguro que quieres eliminar")
     }
-  }
+  },
 };
 </script>
 <style lang="stylus"></style>
