@@ -4,6 +4,7 @@ export default {
     namespaced: true,
     state: {
         Productos: [],
+        add: false
     },
     getters: {},
     actions: {
@@ -41,14 +42,14 @@ export default {
             };
 
             // agregar firestore
-           try {
-            await firebase
-            .firestore()
-            .collection('productos')
-            .add(juguete);
-           } catch (error){
-             alert("Algo salio mal, reintente" , error)
-           }
+            try {
+                await firebase
+                    .firestore()
+                    .collection('productos')
+                    .add(juguete);
+            } catch (error) {
+                alert("Algo salio mal, reintente", error)
+            }
 
 
             // agregar a store
@@ -62,5 +63,8 @@ export default {
         addData(state, payload) {
             state.Productos.push(payload);
         },
+        MostrarAdd(state) {
+            state.add = !state.add 
+        }
     },
 };
