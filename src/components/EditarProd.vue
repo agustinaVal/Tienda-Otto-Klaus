@@ -1,50 +1,51 @@
 <template>
-  <v-form>
+  <div v-if="Object.keys(editProducto).length !== 0">
     <v-container>
-    <h1>Editar productos</h1>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="juguete.nombre"
-            label="Producto"
-          ></v-text-field>
-        </v-col>
+      <h1>Editar/cambiar Productos</h1>
+      <v-form>
+        <v-container>
+          <v-row>
+            <v-col cols="12" md="4">
+              <v-text-field v-model="editProducto.nombre" label="Nombre"></v-text-field>
+            </v-col>
 
-        <v-col cols="12" md="4">
-          <v-text-field v-model="juguete.codigo" label="Codigo"></v-text-field>
-        </v-col>
+            <v-col cols="12" md="4">
+              <v-text-field v-model="editProducto.codigo" label="Código"></v-text-field>
+            </v-col>
 
-        <v-col cols="12" md="4">
-          <v-text-field v-model="juguete.stock" label="Stock"></v-text-field>
-        </v-col>
+            <v-col cols="12" md="4">
+              <v-text-field v-model="editProducto.stock" label="Stock"></v-text-field>
+            </v-col>
 
-        <v-col cols="12" md="4">
-          <v-text-field v-model="juguete.precio" label="Precio"></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-btn
-            @click="
-              Agregar();
-              limpiarData();
-            "
-            depressed
-          >
-            Cambiar
-          </v-btn>
-        </v-col>
-      </v-row>
+            <v-col cols="12" md="4">
+              <v-text-field v-model="editProducto.precio" label="Precio"></v-text-field>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn @click="AgregarProducto(); ClearData()" depressed>
+                Modificar Producto
+              </v-btn>
+            </v-col>
+            <v-col cols="12" md="4">
+              
+              <h1>El producto es: {{ editProducto.nombre }}</h1>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
     </v-container>
-  </v-form>
+  </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-    name: "EditarProd"
-
+  name: "EditarProd",
+  data: () => ({
+    //
+  }),
+  computed: {
+    ...mapState("Data", ["editProducto"]),
+  },
 }
 </script>
 
-<style>
-
-</style>

@@ -4,9 +4,18 @@ export default {
     namespaced: true,
     state: {
         Productos: [],
-        add: false
+        add: false,
+        edit: false,
+        editProducto: {
+
+        },
+
     },
-    getters: {},
+    getters: {
+        datos(state) {
+            return state.Productos;
+        },
+    },
     actions: {
         async getData({
             commit
@@ -64,7 +73,11 @@ export default {
             state.Productos.push(payload);
         },
         MostrarAdd(state) {
-            state.add = !state.add 
+            state.add = !state.add
+        },
+        showEditProducto(state, payload) {
+            const finder = state.Productos.find((el) => el.id === payload);
+            state.editProducto = finder
         }
     },
 };
