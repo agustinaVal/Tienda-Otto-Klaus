@@ -1,9 +1,10 @@
 <template>
-	<div class="about">
-	<v-container>
-  	<v-btn @click="Logout" color="primary">
+	<div class="admin">
+	<v-container fluid>
+  	<v-btn @click="Logout" color="succes">
 			Cerrar sesion
-		</v-btn></v-container>
+		</v-btn>
+    </v-container>
 	</div>
 </template>
 
