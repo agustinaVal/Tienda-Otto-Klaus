@@ -10,17 +10,15 @@
 					transition="scale-transition"
 					width="40"
 				/>
-        
 			</div>
-          <v-spacer></v-spacer>  
-<div id="nav">
-					<router-link to="/">Home</router-link> |
-					<router-link :to="{ name: 'Admin' }">Admin</router-link>
-				</div>
+			<v-spacer></v-spacer>
+			<div id="nav">
+				<router-link to="/">Home</router-link> |
+				<router-link :to="{ name: 'Admin' }">Admin</router-link>
+			</div>
 		</v-app-bar>
 		<v-container>
 			<v-main>
-				
 				<router-view />
 			</v-main>
 		</v-container>
@@ -63,7 +61,7 @@ export default {
 		color: white;
 
 		&.router-link-exact-active {
-			color:#F57F17;
+			color: #f57f17;
 		}
 	}
 }

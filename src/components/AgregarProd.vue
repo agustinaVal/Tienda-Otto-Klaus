@@ -19,10 +19,13 @@
 					<v-text-field v-model="juguete.precio" label="Precio"></v-text-field>
 				</v-col>
 
-				<v-col cols="12" md="4" >
+				<v-col cols="12" md="4">
 					<v-btn
-						@click="AgregarProducto(); ClearData()"
-						depressed 
+						@click="
+							AgregarProducto();
+							ClearData();
+						"
+						depressed
 					>
 						Agregar
 					</v-btn>

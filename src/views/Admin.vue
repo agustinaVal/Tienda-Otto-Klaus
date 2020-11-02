@@ -1,10 +1,10 @@
 <template>
 	<div class="admin">
-	<v-container fluid>
-  	<v-btn @click="Logout" color="succes">
-			Cerrar sesion
-		</v-btn>
-    </v-container>
+		<v-container>
+			<v-btn @click="Logout" depressed>
+				Cerrar sesion
+			</v-btn>
+		</v-container>
 	</div>
 </template>
 
