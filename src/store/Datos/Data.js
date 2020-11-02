@@ -60,8 +60,8 @@ export default {
             // agregar a store
             commit('addData', juguete);
         },
-        eliminarProducto({commit}, id){
-          firebase.firestore().collection("productos").doc(id).delete()
+        eliminarProducto({commit}, producto){
+          firebase.firestore().collection("productos").doc(producto).delete()
         }
     },
     mutations: {

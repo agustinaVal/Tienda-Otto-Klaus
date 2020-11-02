@@ -2,8 +2,8 @@
   <div class="home">
     <v-container>
       <Tabla />
-      <v-btn @click="showAdd" depressed>
-        <span v-if="!add">Agregar Producto</span>
+      <v-btn @click="showAdd" depressed  >
+        <span v-if="!add" >Agregar Producto</span>
         <span v-if="add">Ocultar Formulario</span>
       </v-btn>
       <AgregarProductos v-if="add" />
@@ -14,7 +14,7 @@
 
 <script>
 import Tabla from "@/components/Tabla";
-import AgregarProductos from "@/components/AgregarProd";
+import AgregarProductos from "@/components/AgregarProd.vue";
 import EditarProd from "@/components/EditarProd.vue";
 
 import { mapMutations, mapState } from "vuex";

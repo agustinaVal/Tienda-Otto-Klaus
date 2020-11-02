@@ -1,42 +1,50 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="succes" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="https://wsappsdevs.web.app/images/playstore.png"
           transition="scale-transition"
           width="40"
         />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
       </div>
-
-      <v-spacer></v-spacer>
     </v-app-bar>
-
-    <v-main>
+   <v-container>
+    <v-main> 
+      <router-link to="/">Home</router-link> |
+      <router-link :to="{name : 'Admin'}">Admin</router-link>
       <router-view></router-view>
     </v-main>
+   
+   </v-container>
   </v-app>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import firebase from "firebase";
 export default {
   name: "App",
   data: () => ({
     //
   }),
+   mounted() {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(
+        "admin@admin.com",
+        "000000"
+      )
+      .then((user) => console.log(user))
+      .catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  },
   created() {
     this.getData();
   },

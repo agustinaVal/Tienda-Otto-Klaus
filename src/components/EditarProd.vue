@@ -34,10 +34,7 @@
             </v-col>
             <v-col cols="12" md="4">
               <v-btn
-                @click="
-                  AgregarProducto();
-                  ClearData();
-                "
+                
                 depressed
               >
                 Modificar Producto
@@ -69,7 +66,7 @@ export default {
   methods: {
     ...mapActions(["eliminarProducto"]),
     eliminar() {
-      this.eliminarProducto();
+      this.eliminarProducto(producto);
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <v-simple-table>
-    <template v-slot:default>
+    <template v-slot:default >
       <thead>
         <tr>
           <th class="text-left">Nombre</th>
@@ -8,7 +8,6 @@
           <th class="text-left">Stock</th>
           <th class="text-left">Precio</th>
           <th class="text-left">Id</th>
-     
         </tr>
       </thead>
 
