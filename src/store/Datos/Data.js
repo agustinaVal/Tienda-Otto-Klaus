@@ -1,82 +1,87 @@
-import firebase from 'firebase';
+import firebase from "firebase";
 
 export default {
-    namespaced: true,
-    state: {
-        Productos: [],
-        add: false,
-        edit: false,
-        editProducto: {
-        },
-        
+  namespaced: true,
+  state: {
+    Productos: [],
+    add: false,
+  },
+  getters: {
+    datos(state) {
+      return state.Productos;
     },
-    getters: {
-        datos(state) {
-            return state.Productos;
-        },
+  },
+  mutations: {
+    setData(state, payload) {
+      state.Productos = payload;
     },
-    actions: {
-        async getData({
-            commit
-        }) {
-            const db = await firebase
-                .firestore()
-                .collection('productos')
-                .get();
-            db.forEach((el) => {
-                const producto = {
-                    id: el.id,
-                    nombre: el.data().nombre,
-                    codigo: el.data().codigo,
-                    stock: el.data().stock,
-                    precio: el.data().precio,
-                };
-                commit('setData', producto);
+    AddData(state, payload) {
+      state.Productos.push(payload);
+    },
+    MostrarAdd(state) {
+      state.add = !state.add;
+    },
+  },
+  actions: {
+    getData({ commit }) {
+      firebase
+        .firestore()
+        .collection("productos")
+        .onSnapshot((snapshot) => {
+          let products = [];
+          snapshot.forEach((p) => {
+            products.push({
+              id: p.id,
+              nombre: p.data().nombre,
+              codigo: p.data().codigo,
+              stock: p.data().stock,
+              precio: p.data().precio,
             });
-        },
-        async addData({
-            commit
-        }, payload) {
-            const precio = Number(payload.precio);
-            const stock = Number(payload.stock);
-            const nombre = payload.nombre.toLowerCase();
-            const codigo = payload.codigo.toUpperCase();
+          });
+          commit("setData", products);
+        });
+    },
+    async addData({ commit }, payload) {
+      const juguete = {
+        precio: Number(payload.precio),
+        stock: Number(payload.stock),
+        nombre: payload.nombre.toLowerCase(),
+        codigo: payload.codigo.toUpperCase(),
+      };
 
-            const juguete = {
-                precio,
-                stock,
-                nombre,
-                codigo,
-            };
-            // agregar firestore
-            try {
-                await firebase
-                    .firestore()
-                    .collection('productos')
-                    .add(juguete);
-            } catch (error) {
-                alert("Algo salio mal, reintente", error)
-            }
-            // agregar a store
-            commit('addData', juguete);
-        },
-        eliminarProducto({commit}, producto){
-          firebase.firestore().collection("productos").doc(producto).delete()
-        }
+      try {
+        await firebase
+          .firestore()
+          .collection("productos")
+          .add(juguete);
+      } catch (error) {
+        console.error("Error de carga, intente de nuevo:", error);
+      }
     },
-    mutations: {
-        setData(state, payload) {
-            state.Productos.push(payload);
-        },
-        addData(state, payload) {
-            state.Productos.push(payload);
-        },
-        MostrarAdd(state) {
-            state.add = !state.add
-        },
-        showEditProducto(state, payload) {
-            const finder = state.Productos.find((el) => el.id === payload);
-            state.editProducto = finder
-        }
+
+    async borrarJuguetes({ commit }, id) {
+      try {
+        await firebase
+          .firestore()
+          .collection("productos")
+          .doc(id)
+          .delete();
+      } catch (error) {
+        console.error("Error al eliminar, intenta de nuevo:", error);
+      }
     },
+
+    async editararJuguetes({ commit },juguetes ) {
+      console.log(juguetes)
+      try {
+        await firebase
+          .firestore()
+          .collection("productos")
+          .doc(juguetes.id)
+          .update(juguetes.data);
+      } catch (error) {
+        console.error("Error de carga, intente de nuevo:", error);
+      }
+    },
+  },
 };

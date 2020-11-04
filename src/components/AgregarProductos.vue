@@ -1,8 +1,9 @@
 <template>
+	<div>
 	<v-form>
 		<v-container>
 			<h1>Agregar productos</h1>
-			<v-row justify="center">
+			<v-row>
 				<v-col cols="12" md="4">
 					<v-text-field v-model="juguete.nombre" label="Producto"></v-text-field>
 				</v-col>
@@ -33,31 +34,32 @@
 			</v-row>
 		</v-container>
 	</v-form>
+	</div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
-	name: 'AgregarProductos',
-	data: () => ({
-		juguete: {
-			nombre: '',
-			codigo: '',
-			stock: '',
-			precio: '',
-		},
-	}),
-	methods: {
-		...mapActions('Data', ['addData']),
-		AgregarProducto() {
-			this.addData(this.juguete);
-		},
-		ClearData() {
-			(this.juguete.nombre = ''),
-				(this.juguete.codigo = ''),
-				(this.juguete.stock = ''),
-				(this.juguete.precio = '');
-		},
-	},
+  name: "AgregarProductos",
+  data: () => ({
+    juguete: {
+      nombre: "",
+      codigo: "",
+      stock: "",
+      precio: "",
+    },
+  }),
+  methods: {
+    ...mapActions("Data", ["addData"]),
+    AgregarProducto() {
+      this.addData(this.juguete);
+    },
+    ClearData() {
+      this.juguete.nombre = "";
+      this.juguete.codigo = "";
+      this.juguete.precio = "";
+      this.juguete.stock = "";
+    },
+  },
 };
 </script>
