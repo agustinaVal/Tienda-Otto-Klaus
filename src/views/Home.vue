@@ -1,6 +1,25 @@
 <template>
 	<div class="home">
 		<v-container>
+			<v-app-bar app color="succes" dark>
+				<div class="d-flex align-center">
+					<v-img
+						alt="Vuetify Logo"
+						class="shrink mr-2"
+						contain
+						src="https://wsappsdevs.web.app/images/playstore.png"
+						transition="scale-transition"
+						width="40"
+					/>
+				</div>
+				<v-spacer></v-spacer>
+				<div>
+					<v-btn @click="logout">
+						LogOut
+					</v-btn>
+				</div>
+			</v-app-bar>
+
 			<Tabla />
 			<v-btn @click="showAdd" depressed>
 				<span v-if="!add">Agregar Producto</span>
@@ -16,7 +35,7 @@
 import Tabla from '@/components/Tabla';
 import AgregarProductos from '@/components/AgregarProd.vue';
 import EditarProd from '@/components/EditarProd.vue';
-
+import firebase from 'vuex';
 import { mapMutations, mapState } from 'vuex';
 
 export default {
@@ -33,6 +52,17 @@ export default {
 		...mapMutations('Data', ['MostrarAdd']),
 		showAdd() {
 			this.MostrarAdd();
+		},
+		logout() {
+			firebase
+				.auth()
+				.signOut()
+				.then(() => {
+					this.$router.replace('home');
+				})
+				.catch((e) => {
+					alert('No funciona Wily', e);
+				});
 		},
 	},
 };
