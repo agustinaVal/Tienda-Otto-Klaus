@@ -5,10 +5,7 @@ import firebase from 'firebase';
 
 Vue.use(VueRouter);
 
-const routes = [{
-		path: '*',
-		redirect: '/login',
-	},
+const routes = [
 	{
 		path: '/',
 		redirect: '/login',
@@ -24,7 +21,7 @@ const routes = [{
 	{
 		path: '/login',
 		name: 'Login',
-		component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue'),
+		component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
 	},
 ];
 
@@ -37,7 +34,7 @@ router.beforeEach((to, from, next) => {
 	let user = firebase.auth().currentUser;
 	let authRequired = to.matched.some((route) => route.meta.login);
 	if (!user && authRequired) {
-		next('/home');
+		next('/');
 	} else if (user && !authRequired) {
 		next('login');
 	} else {

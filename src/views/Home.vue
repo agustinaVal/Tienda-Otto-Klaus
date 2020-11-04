@@ -35,7 +35,7 @@
 import Tabla from '@/components/Tabla';
 import AgregarProductos from '@/components/AgregarProd.vue';
 import EditarProd from '@/components/EditarProd.vue';
-import firebase from 'vuex';
+import firebase from 'firebase';
 import { mapMutations, mapState } from 'vuex';
 
 export default {
@@ -58,7 +58,7 @@ export default {
 				.auth()
 				.signOut()
 				.then(() => {
-					this.$router.replace('home');
+					this.$router.replace('login');
 				})
 				.catch((e) => {
 					alert('No funciona Wily', e);

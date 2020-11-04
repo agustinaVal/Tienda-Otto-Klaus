@@ -9,7 +9,7 @@
 			<input v-model="contrasena" type="password" placeholder="Clave" />
 
 			<div class="my-2">
-				<v-btn @click="login" color="success" dark large class="my-5"> Ingresar </v-btn>
+				<v-btn @click="login" color="success" dark large class="mx-5"> Ingresar </v-btn>
 				<v-btn @click="logInGoogle" color="error" dark large> Login con Gmail </v-btn>
 			</div>
 		</form>

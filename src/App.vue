@@ -1,9 +1,9 @@
 <template>
-  <v-app>
-    <v-main>
-      <router-view />
-    </v-main>
-  </v-app>
+	<v-app>
+		<v-main>
+			<router-view />
+		</v-main>
+	</v-app>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
 	data: () => ({
 		//
 	}),
-	
+
 	created() {
 		this.getData();
 	},
@@ -23,6 +23,4 @@ export default {
 	},
 };
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
